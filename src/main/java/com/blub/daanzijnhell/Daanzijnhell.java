@@ -2,11 +2,18 @@ package com.blub.daanzijnhell;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Daanzijnhell extends JavaPlugin {
+public class Daanzijnhell extends JavaPlugin {
+
+    boolean isActive = false;
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        //Get and set config
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        //Register Events
+        getServer().getPluginManager().registerEvents(new EntityEvents(this), this);
 
     }
 
@@ -14,4 +21,6 @@ public final class Daanzijnhell extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
+
+    public boolean getIsActive(){ return this.isActive ;}
 }
