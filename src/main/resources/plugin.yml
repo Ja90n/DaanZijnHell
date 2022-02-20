@@ -1,0 +1,4 @@
+name: Daanzijnhell
+version: '${project.version}'
+main: com.blub.daanzijnhell.Daanzijnhell
+api-version: 1.18
