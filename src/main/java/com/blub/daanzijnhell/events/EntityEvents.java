@@ -1,5 +1,6 @@
-package com.blub.daanzijnhell;
+package com.blub.daanzijnhell.events;
 
+import com.blub.daanzijnhell.Daanzijnhell;
 import org.bukkit.DyeColor;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -16,7 +17,6 @@ public class EntityEvents implements Listener{
     @EventHandler
     public void onEntitySpawn(EntitySpawnEvent e){
         if (daanzijnhell.getIsActive()){
-            e.getEntity().getType();
             switch (e.getEntity().getType()){
                 //When the cow, chicken, pig and sheep spawn they stay baby forever and (mostly) un killable
                 case COW:

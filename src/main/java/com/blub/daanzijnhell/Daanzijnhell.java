@@ -1,10 +1,15 @@
 package com.blub.daanzijnhell;
 
+import com.blub.daanzijnhell.command.activateCommand;
+import com.blub.daanzijnhell.events.EntityEvents;
+import com.blub.daanzijnhell.events.deathEvents;
+import com.blub.daanzijnhell.events.sleepEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Daanzijnhell extends JavaPlugin {
 
-    boolean isActive = false;
+    public boolean isActive = false;
+    int difficulty = 0;
 
     @Override
     public void onEnable() {
@@ -14,6 +19,11 @@ public class Daanzijnhell extends JavaPlugin {
 
         //Register Events
         getServer().getPluginManager().registerEvents(new EntityEvents(this), this);
+        getServer().getPluginManager().registerEvents(new sleepEvents(this), this);
+        getServer().getPluginManager().registerEvents(new deathEvents(this), this);
+
+        //Register Command / TabExecutor
+        getCommand("daanzijnhell").setExecutor(new activateCommand(this));
 
     }
 
@@ -23,4 +33,5 @@ public class Daanzijnhell extends JavaPlugin {
     }
 
     public boolean getIsActive(){ return this.isActive ;}
+    public int getDifficulty(){ return this.difficulty ;}
 }
